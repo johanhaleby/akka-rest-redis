@@ -32,7 +32,7 @@ class TheServlet extends ScalatraServlet {
     result
   }
 
-    get("/redis/get/:key/") {
+    get("/redis/get/:key") {
     val redisActor = actorOf[RedisActor].start
     val value =  (redisActor !! Read({params("key")})).getOrElse("Failed to get")
     redisActor.stop
